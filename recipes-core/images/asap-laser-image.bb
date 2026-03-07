@@ -16,7 +16,6 @@ EXTRA_IMAGE_FEATURES += "debug-tweaks"
 IMAGE_INSTALL += " \
     packagegroup-core-boot \
     psplash \
-    psplash-systemd \
     wayland \
     weston \
     weston-init \
