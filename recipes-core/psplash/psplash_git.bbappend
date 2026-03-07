@@ -2,4 +2,4 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 # Definiamo la nostra immagine custom
-SPLASH_IMAGES = "file://asap.png;outsuffix=asap"
+SPLASH_IMAGES = "file://asap.png;outsuffix=default"
