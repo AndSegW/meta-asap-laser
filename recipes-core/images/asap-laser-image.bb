@@ -16,4 +16,10 @@ EXTRA_IMAGE_FEATURES += "debug-tweaks"
 IMAGE_INSTALL += " \
     packagegroup-core-boot \
     psplash \
+    wayland \
+    weston \
+    weston-init \
+    qtbase \
+    qtwayland \
+    app-prova \
 "
