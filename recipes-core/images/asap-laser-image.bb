@@ -16,7 +16,6 @@ EXTRA_IMAGE_FEATURES += "debug-tweaks"
 IMAGE_INSTALL += " \
     packagegroup-core-boot \
     plymouth \
-    plymouth-theme-spinner \
     wayland \
     weston \
     weston-init \
