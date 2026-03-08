@@ -1,11 +1,17 @@
-# Diciamo a Yocto di cercare i file nella nostra cartella 'files'
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-# Definiamo la nostra immagine custom
-SPLASH_IMAGES = "file://asap.png;outsuffix=default"
-SRC_URI += "file://psplash-wait-fb.conf"
+SPLASH_IMAGES = "file://asap-logo.png;outsuffix=default"
+SRC_URI += "file://asap-splash.service"
+
+# Diciamo a Yocto di usare il nostro servizio
+inherit systemd
+SYSTEMD_SERVICE:${PN} += "asap-splash.service"
+SYSTEMD_AUTO_ENABLE = "enable"
 
 do_install:append() {
-    install -d ${D}${systemd_system_unitdir}/psplash-start.service.d
-    install -m 0644 ${WORKDIR}/psplash-wait-fb.conf ${D}${systemd_system_unitdir}/psplash-start.service.d/
+    install -d ${D}${systemd_system_unitdir}
+    install -m 0644 ${WORKDIR}/asap-splash.service ${D}${systemd_system_unitdir}/
+
+    # Bruciamo il vecchio script che faceva impazzire systemd!
+    rm -f ${D}${sysconfdir}/init.d/psplash.sh
 }

@@ -1,0 +1,13 @@
+[Unit]
+Description=ASAP Boot Splash Screen
+DefaultDependencies=no
+After=systemd-udev-settle.service
+Requires=systemd-udev-settle.service
+Before=sysinit.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/psplash -n
+
+[Install]
+WantedBy=sysinit.target
