@@ -18,4 +18,10 @@ do_install:append() {
 
     # Ora possiamo rimuovere il vecchio script senza far arrabbiare Yocto
     rm -f ${D}${sysconfdir}/init.d/psplash.sh
+
+    rm -f ${D}${systemd_system_unitdir}/psplash-systemd.service
+    rm -f ${D}${systemd_system_unitdir}/psplash-start.service
 }
+
+FILES:${PN} += "${bindir}/psplash ${systemd_system_unitdir}/asap-splash.service"
+
