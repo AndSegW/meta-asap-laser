@@ -15,7 +15,6 @@ EXTRA_IMAGE_FEATURES += "debug-tweaks"
 # Oltre ai tool di boot essenziali, aggiungiamo "psplash" per lo splash screen.
 IMAGE_INSTALL += " \
     packagegroup-core-boot \
-    psplash-default \
     psplash \
     wayland \
     weston \
