@@ -1,15 +1,21 @@
 [Unit]
 Description=ASAP HMI Qt Application
-After=weston.service
+After=weston.service network.target
 Requires=weston.service
 
 [Service]
 Type=simple
 User=weston
 Group=weston
-ExecStart=/bin/sh -c 'export XDG_RUNTIME_DIR=/run/user/$(id -u); export WAYLAND_DISPLAY=wayland-1; sleep 3; exec /usr/bin/appProva -platform wayland'
-Restart=on-failure
-RestartSec=3
+# Passiamo lo zainetto delle variabili in modo pulito, senza bash!
+# (Di default in Yocto, l'utente weston ha l'ID 1000)
+Environment="XDG_RUNTIME_DIR=/run/user/1000"
+Environment="WAYLAND_DISPLAY=wayland-1"
+# Aspettiamo 3 secondi che Weston apra il canale video
+ExecStartPre=/bin/sleep 3
+ExecStart=/usr/bin/appProva -platform wayland
+Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target

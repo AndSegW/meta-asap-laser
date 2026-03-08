@@ -3,6 +3,11 @@ LICENSE = "CLOSED"
 
 DEPENDS = "qtbase qtdeclarative qtwayland qtdeclarative-native"
 
+RDEPENDS:${PN} += " \
+    qtbase \
+    qtwayland \
+    qtdeclarative \
+"
 # Aggiunto il nostro file .service alla lista dei sorgenti
 SRC_URI = "git://github.com/AndSegW/raspberry_qt.git;protocol=https;branch=master \
            file://app-prova.service"
