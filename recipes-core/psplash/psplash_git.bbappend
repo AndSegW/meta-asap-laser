@@ -23,5 +23,5 @@ do_install:append() {
     rm -f ${D}${systemd_system_unitdir}/psplash-start.service
 }
 
-FILES:${PN} += "${bindir}/psplash ${systemd_system_unitdir}/asap-splash.service"
+FILES:${PN} += "${systemd_system_unitdir}/asap-splash.service"
 
