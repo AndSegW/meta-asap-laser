@@ -1,17 +1,21 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-SPLASH_IMAGES = "file://asap-logo.png;outsuffix=default"
+# Usiamo il nome esatto del tuo file
+SPLASH_IMAGES = "file://asap.png;outsuffix=default"
 SRC_URI += "file://asap-splash.service"
 
-# Diciamo a Yocto di usare il nostro servizio
+# LA MAGIA: Diciamo a Yocto di disabilitare la ricerca del vecchio script SysVinit
+INITSCRIPT_PACKAGES = ""
+
 inherit systemd
-SYSTEMD_SERVICE:${PN} += "asap-splash.service"
+SYSTEMD_PACKAGES = "${PN}"
+SYSTEMD_SERVICE:${PN} = "asap-splash.service"
 SYSTEMD_AUTO_ENABLE = "enable"
 
 do_install:append() {
     install -d ${D}${systemd_system_unitdir}
     install -m 0644 ${WORKDIR}/asap-splash.service ${D}${systemd_system_unitdir}/
 
-    # Bruciamo il vecchio script che faceva impazzire systemd!
+    # Ora possiamo rimuovere il vecchio script senza far arrabbiare Yocto
     rm -f ${D}${sysconfdir}/init.d/psplash.sh
 }
