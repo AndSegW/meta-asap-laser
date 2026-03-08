@@ -19,7 +19,6 @@ IMAGE_INSTALL += " \
     wayland \
     weston \
     weston-init \
-    weston-kiosk \
     qtbase \
     qtwayland \
     app-prova \
