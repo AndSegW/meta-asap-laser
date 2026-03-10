@@ -1,7 +1,7 @@
 [Unit]
 Description=ASAP HMI Qt Application
 After=weston.service network.target
-Requires=weston.service
+Wants=weston.service
 
 [Service]
 Type=simple
@@ -9,8 +9,8 @@ User=weston
 Group=weston
 # Passiamo lo zainetto delle variabili in modo pulito, senza bash!
 # (Di default in Yocto, l'utente weston ha l'ID 1000)
-Environment="XDG_RUNTIME_DIR=/run/user/1000"
-Environment="WAYLAND_DISPLAY=wayland-1"
+Environment="XDG_RUNTIME_DIR=/run/user/%U"
+Environment="WAYLAND_DISPLAY=wayland-0"
 ExecStart=/usr/bin/appProva -platform wayland
 Restart=always
 RestartSec=5

@@ -21,6 +21,10 @@ do_install() {
     install -m 0644 ${WORKDIR}/asap.png ${D}${datadir}/plymouth/themes/asap/
 }
 
+pkg_postinst_ontarget:${PN}() {
+    plymouth-set-default-theme asap
+}
+
 # Diciamo a Yocto che tutti i file in /usr/share/plymouth/themes/asap fanno parte di questo pacchetto
 FILES:${PN} += "${datadir}/plymouth/themes/asap/*"
 
