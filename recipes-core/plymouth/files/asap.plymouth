@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=ASAP
+Description=ASAP Laser Splash Screen
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/asap
+ScriptFile=/usr/share/plymouth/themes/asap/asap.script
